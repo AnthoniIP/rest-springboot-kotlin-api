@@ -2,6 +2,8 @@ package com.ipsoft.restspringbootkotlinapi
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.ipsoft.restspringbootkotlinapi.math.controller.MathController
+import com.ipsoft.restspringbootkotlinapi.math.model.CalculateRequest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired

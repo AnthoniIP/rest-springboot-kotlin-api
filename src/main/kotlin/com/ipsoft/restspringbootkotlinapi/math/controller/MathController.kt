@@ -1,6 +1,8 @@
-package com.ipsoft.restspringbootkotlinapi
+package com.ipsoft.restspringbootkotlinapi.math.controller
 
-import com.ipsoft.restspringbootkotlinapi.exceptions.UnsupportedMathOperatorException
+import com.ipsoft.restspringbootkotlinapi.math.exceptions.UnsupportedMathOperatorException
+import com.ipsoft.restspringbootkotlinapi.math.model.CalculateRequest
+import com.ipsoft.restspringbootkotlinapi.math.model.CalculateResponse
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -70,18 +72,18 @@ class MathController {
             else -> throw IllegalArgumentException("Invalid operator")
         }
     }
-}
 
-private fun String.containsInvalidMathCharacters(): Boolean {
-    val allowedChars = "1234567890+-/*%"
+    private fun String.containsInvalidMathCharacters(): Boolean {
+        val allowedChars = "1234567890+-/*%"
 
-    if (this.isEmpty()) return false
+        if (this.isEmpty()) return false
 
-    for (char in this) {
-        if (char !in allowedChars) {
-            return true
+        for (char in this) {
+            if (char !in allowedChars) {
+                return true
+            }
         }
-    }
 
-    return false
+        return false
+    }
 }

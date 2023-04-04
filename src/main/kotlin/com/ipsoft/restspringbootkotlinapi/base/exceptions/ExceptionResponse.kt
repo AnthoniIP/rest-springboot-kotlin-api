@@ -1,4 +1,4 @@
-package com.ipsoft.restspringbootkotlinapi.exceptions
+package com.ipsoft.restspringbootkotlinapi.base.exceptions
 
 import java.util.Date
 

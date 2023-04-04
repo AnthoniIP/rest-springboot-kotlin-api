@@ -1,6 +1,6 @@
-package com.ipsoft.restspringbootkotlinapi.exceptions
+package com.ipsoft.restspringbootkotlinapi.base.exceptions
 
-import java.util.Date
+import com.ipsoft.restspringbootkotlinapi.math.exceptions.UnsupportedMathOperatorException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
