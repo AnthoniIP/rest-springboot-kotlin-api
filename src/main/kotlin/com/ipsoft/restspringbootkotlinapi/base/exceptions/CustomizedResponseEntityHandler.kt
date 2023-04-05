@@ -1,6 +1,7 @@
 package com.ipsoft.restspringbootkotlinapi.base.exceptions
 
 import com.ipsoft.restspringbootkotlinapi.math.exceptions.UnsupportedMathOperatorException
+import com.ipsoft.restspringbootkotlinapi.person.exceptions.NoPersonLocatedException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -24,4 +25,12 @@ class CustomizedResponseEntityHandler : ResponseEntityExceptionHandler() {
     ): ResponseEntity<ExceptionResponse> =
         ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body(ExceptionResponse("Invalid math operator"))
+
+    @ExceptionHandler(NoPersonLocatedException::class)
+    fun handleNoPersonLocatedException(
+        ex: NoPersonLocatedException,
+        request: WebRequest
+    ): ResponseEntity<ExceptionResponse> =
+        ResponseEntity.status(HttpStatus.NOT_FOUND)
+            .body(ExceptionResponse(ex.message))
 }
