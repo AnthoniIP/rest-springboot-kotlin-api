@@ -2,6 +2,7 @@ package com.ipsoft.restspringbootkotlinapi.base.exceptions
 
 import com.ipsoft.restspringbootkotlinapi.math.exceptions.UnsupportedMathOperatorException
 import com.ipsoft.restspringbootkotlinapi.person.exceptions.NoPersonLocatedException
+import com.ipsoft.restspringbootkotlinapi.person.exceptions.UserCreationException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -32,5 +33,13 @@ class CustomizedResponseEntityHandler : ResponseEntityExceptionHandler() {
         request: WebRequest
     ): ResponseEntity<ExceptionResponse> =
         ResponseEntity.status(HttpStatus.NOT_FOUND)
+            .body(ExceptionResponse(ex.message))
+
+    @ExceptionHandler(UserCreationException::class)
+    fun handleUserCreationException(
+        ex: UserCreationException,
+        request: WebRequest
+    ): ResponseEntity<ExceptionResponse> =
+        ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(ExceptionResponse(ex.message))
 }
